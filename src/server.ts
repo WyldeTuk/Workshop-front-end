@@ -1,16 +1,13 @@
+import "reflect-metadata"
+
 import express from "express"
+import router from './routes'
 
-const app = express();
+const app = express()
 
-app.get("/", (req, res) => {
-    res.send("Hello Worlds")
-})
+app.use(express.json())
+app.use(router)
 
-app.get("/testanto-se-funfou-msm", (req, res) => {
-    res.send("Oia só isso")
-})
+const PORT = 8080
 
-
-app.listen(3000, () => {
-    console.log("APLICATIVO TA NO AR 🤖!")
-})
+app.listen(PORT, () => console.log("Servidor rodando"))
