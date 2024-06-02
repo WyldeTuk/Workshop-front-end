@@ -2,18 +2,21 @@
   "name": "workshop-front-end",
   "version": "1.0.0",
   "main": "server.js",
-  "repository": "https://github.com/WyldeTuk/Workshop-front-end",
-  "author": "Wanderson Leopoldino <leopoldinotuk@gmail.com>",
+  "repository": "https://github.com/WyldeTuk/Workshop-front-end.git",
+  "author": "Wanderson Leopoldino de Sousa <leopoldinotuk@gmail.com>",
   "license": "MIT",
   "scripts": {
     "start": "yarn ts-node-dev ./src/server.ts",
     "build": "yarn tsc",
     "postinstall": "yarn build",
-    "typeorm": "typeorm-ts-node-esm",
-    "migration:create": "typeorm migration:create ./db/migration/Create_User_Table",
-    "migration:run": "typeorm -- migration:run -d db/data-source.ts"
+    "typeorm": "typeorm-ts-node-commonjs",
+    "migration:create": "yarn typeorm migration:create ./db/migration/Create_Courses_Table",
+    "migration:run": "yarn typeorm -- migration:run -d ./db/data-source.ts",
+    "entity:create": "yarn typeorm entity:create ./db/entity/User",
+    "migration:revert": "yarn typeorm migration:revert -- ./db/entity/User"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "dotenv": "16.4.5",
     "express": "4.19.2",
     "pg": "8.11.5",

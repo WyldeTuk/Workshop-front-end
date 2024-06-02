@@ -1,9 +1,9 @@
-require("reflect-metadata")
-require("dotenv/config")
+import "reflect-metadata"
+import "dotenv/config"
 
-const { DataSource } = require('typeorm')
+import { DataSource } from 'typeorm'
 
-const AppDataSource = new DataSource({
+export const AppDataSource = new DataSource({
   type: "postgres",
   url: process.env.DATABASE_URL,
   synchronize: false,
@@ -22,7 +22,3 @@ AppDataSource.initialize()
   .catch((err) => {
     console.error("Error during data source initialization", err)
   })
-
-module.exports = {
-  AppDataSource
-}
